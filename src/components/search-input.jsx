@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { SearchIcon } from "@primer/octicons-react";
 import { Spinner } from "@primer/react";
+import Profile from "./Profile";
 
 const UserSearch = ({ user }) => {
 
   const [username, setUsername] = useState(user);
   const [userExists, setUserExists] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [userData, setUserdata] = useState([]);
+
+
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -19,10 +23,16 @@ const UserSearch = ({ user }) => {
       setLoading(false);
       return;
     }
+
     const response = await fetch(`https://api.github.com/users/${username}`);
     const data = await response.json();
     setUserExists(data.id);
     setLoading(false);
+    console.log(data)
+    if(data)
+      {
+        setUserdata(data)
+      }
   }
 
   const newUsername = username !== user && username;
@@ -61,6 +71,10 @@ const UserSearch = ({ user }) => {
                 <a href={`/?customUsername=${username}`}>
                   Preview user: <span className="font-bold">{username}</span>
                 </a>
+                {/* profile component */}
+
+                <Profile userData={userData} />
+
               </span> :
               <span className=" px-6">
                 {userExists !== -1 && newUsername && newUsername !== user ?
@@ -70,8 +84,11 @@ const UserSearch = ({ user }) => {
                     <span className="ps-2">or pres <kbd>Enter</kbd> to search GitHub.</span>
                   </span>}
               </span>
+
           }
         </>
+
+
       }
     </div>
   );
