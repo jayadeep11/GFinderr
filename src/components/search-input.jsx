@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { SearchIcon } from "@primer/octicons-react";
 import { Spinner } from "@primer/react";
 import Profile from "./Profile";
+import { Link } from "react-router-dom";
+import UserDetails from "./UserDetails";
 
 const UserSearch = ({ user }) => {
 
@@ -88,8 +90,8 @@ const UserSearch = ({ user }) => {
           }
         </>
 
-
       }
+      
     </div>
   );
 };
