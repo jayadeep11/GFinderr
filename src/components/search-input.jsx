@@ -68,7 +68,7 @@ const UserSearch = ({ user }) => {
             userExists > 1 ?
               <span className="text-[10px] bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-transparent bg-clip-text px-6">
                 <a href={`/?customUsername=${username}`}>
-                  Preview user: <span className="font-medium">{username}</span>
+                  Preview user: <span className="font-medium ">{username}</span>
                 </a>
                 {/* profile component */}
 
