@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { SearchIcon } from "@primer/octicons-react";
 import { Spinner } from "@primer/react";
 import Profile from "./Profile";
-import { Link } from "react-router-dom";
-import UserDetails from "./UserDetails";
 
 const UserSearch = ({ user }) => {
 
@@ -31,16 +29,15 @@ const UserSearch = ({ user }) => {
     setUserExists(data.id);
     setLoading(false);
     console.log(data)
-    if(data)
-      {
-        setUserdata(data)
-      }
+    if (data) {
+      setUserdata(data)
+    }
   }
 
   const newUsername = username !== user && username;
 
   return (
-    <div className='w-96'>
+    <div className='w-full lg:w-1/2'>
       <div className="relative p-6 flex-auto">
         <label className="block text-white text-sm font-bold mb-1" htmlFor="username">
           GitHub username
@@ -49,7 +46,7 @@ const UserSearch = ({ user }) => {
           <input
             placeholder="Search GitHub"
             type="text"
-            className="border border-gray-400 rounded-lg p-4 w-full"
+            className="border border-gray-400 bg-transparent text-white rounded-lg p-4 w-full"
             value={username}
             onChange={handleUsernameChange}
             onKeyDown={(e) => {
@@ -60,7 +57,7 @@ const UserSearch = ({ user }) => {
           />
 
           <span className="absolute mr-2 w-10 cursor-pointer" onClick={handleSearch}>
-            {loading ? <Spinner /> : <SearchIcon size={32} />}
+            {loading ? <Spinner /> : <SearchIcon size={32} className="text-white" />}
           </span>
         </div>
       </div>
@@ -69,9 +66,9 @@ const UserSearch = ({ user }) => {
         <>
           {
             userExists > 1 ?
-              <span className="bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-transparent bg-clip-text px-6">
+              <span className="text-[10px] bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-transparent bg-clip-text px-6">
                 <a href={`/?customUsername=${username}`}>
-                  Preview user: <span className="font-bold">{username}</span>
+                  Preview user: <span className="font-medium ">{username}</span>
                 </a>
                 {/* profile component */}
 
@@ -91,7 +88,7 @@ const UserSearch = ({ user }) => {
         </>
 
       }
-      
+
     </div>
   );
 };
