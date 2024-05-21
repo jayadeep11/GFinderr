@@ -6,14 +6,16 @@ const Profile = ({ userData }) => {
     const { avatar_url, name, login } = userData;
 
     return (
-        <div className='bg-transparent border rounded-xl px-10 py-5'>
-            <div className='lg:w-1/2 w-full bg-transparent'>
-                <img src={userData.avatar_url} alt="" className=' rounded-full ' />
+        <div className='bg-transparent border-gray-500 rounded-xl lg:flex flex-row  justify-between lg:px-10 py-5'>
+            <div className='flex items-center justify-center  w-[200px] lg:w-full bg-transparent lg:p-9'>
+                <img src={userData.avatar_url} alt="" className=' rounded-full  w-20 h-20 lg:w-full lg:h-full ' />
             </div>
-            <div className="bio flex flex-col  bg-transparent items-center justify-center gap-2  w-full  lg:w-1/2" >
-                <h2 className='text-gray-800 font-bold text-sm text-center'>{userData.name}</h2>
-                <h3 className='text-gray-500 font-semibold'>{userData.bio}</h3>
-                <Link to='/userdetails' className='border border-gray-500 text-white p-2 rounded-xl'>View profile</Link>
+            <div className=" flex flex-col justify-center gap-10 items-center bg-transparent w-full " >
+                <div className='text-center text-white mt-6 text-[1rem] lg:w-full lg:text-[2rem]'>
+                    <h2 className='font-bold  '>{userData.name}</h2>
+                    <h3 className='text-sm pt-3'>{userData.bio}</h3>
+                </div>
+                <Link to='/userdetails' className='border border-gray-500 text-black font-normal  p-3 bg-white rounded-full'>View profile</Link>
             </div>
             {/* <input type="" value= "View Profile" className='mt-3 px-4 py-2 text-sm text-blue-800 font-semibold rounded-full border-2 hover:bg-blue-800  hover:text-white border-blue-800'/> */}
         </div>
@@ -21,3 +23,4 @@ const Profile = ({ userData }) => {
 }
 
 export default Profile
+

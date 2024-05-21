@@ -38,7 +38,7 @@ const UserSearch = ({ user }) => {
 
   return (
     <div className='w-full lg:w-1/2'>
-      <div className="relative p-6 flex-auto">
+      <div className="relative py-6 flex-auto">
         <label className="block text-white text-sm font-bold mb-1" htmlFor="username">
           GitHub username
         </label>
@@ -66,16 +66,13 @@ const UserSearch = ({ user }) => {
         <>
           {
             userExists > 1 ?
-              <span className="text-[10px] bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-transparent bg-clip-text px-6">
-                <a href={`/?customUsername=${username}`}>
-                  Preview user: <span className="font-medium ">{username}</span>
-                </a>
+              <span className="text-[10px] bg-gradient-to-r from-purple-400 flex items-center justify-center to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-transparent bg-clip-text px-6">
                 {/* profile component */}
 
                 <Profile userData={userData} />
 
               </span> :
-              <span className=" px-6">
+              <span className="hidden px-6 text-sm">
                 {userExists !== -1 && newUsername && newUsername !== user ?
                   <span className="text-red-500">User <strong>{newUsername}</strong> not found.</span> :
                   <span className="inline-flex items-baseline text-zinc-500">
