@@ -7,7 +7,7 @@ const Profile = ({ userData }) => {
 
     return (
         <div className='bg-transparent border-gray-500 rounded-xl lg:flex flex-row  justify-between lg:px-10 py-5'>
-            <div className='flex items-center justify-center  w-[200px] lg:w-full bg-transparent lg:p-9'>
+            <div className='flex items-center justify-center   lg:w-full bg-transparent lg:p-9'>
                 <img src={userData.avatar_url} alt="" className=' rounded-full  w-20 h-20 lg:w-full lg:h-full ' />
             </div>
             <div className=" flex flex-col justify-center gap-10 items-center bg-transparent w-full " >
