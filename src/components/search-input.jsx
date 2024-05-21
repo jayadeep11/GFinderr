@@ -72,7 +72,7 @@ const UserSearch = ({ user }) => {
                 <Profile userData={userData} />
 
               </span> :
-              <span className=" px-6">
+              <span className="hidden px-6 text-sm">
                 {userExists !== -1 && newUsername && newUsername !== user ?
                   <span className="text-red-500">User <strong>{newUsername}</strong> not found.</span> :
                   <span className="inline-flex items-baseline text-zinc-500">
