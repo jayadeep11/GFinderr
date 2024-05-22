@@ -13,3 +13,7 @@ body {
   background-color: black;
   overflow-x: hidden;
 }
+
+.car {
+  background: #0A0A0A;
+}
