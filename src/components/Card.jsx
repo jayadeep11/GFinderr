@@ -88,7 +88,7 @@ const TiltCard = ({ user }) => {
                 >
                     {user.bio}
                 </p>
-                <Link style={{ transform: "translatez(50px)" }} to='/userdetails' className='border hover:text-blue-400 text-center   border-gray-500 text-black font-normal  p-3 bg-white rounded-full'>View profile</Link>
+                <Link style={{ transform: "translatez(50px)" }} to='/userdetails' className='border hover:bg-black  text-center hover:text-white  border-gray-500 text-black font-normal  p-3  rounded-full'>View profile</Link>
             </div>
         </motion.div>
     );
