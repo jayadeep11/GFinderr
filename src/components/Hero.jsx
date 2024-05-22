@@ -1,5 +1,4 @@
-import Profile from "./Profile";
-import UserSearch from "./search-input";
+import UserSearch from "./search-input.jsx";
 
 export default function Hero() {
     return (

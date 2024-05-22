@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { SearchIcon } from "@primer/octicons-react";
 import { Spinner } from "@primer/react";
 import Profile from "./Profile";
+import TiltCard from "./Card";
 
 const UserSearch = ({ user }) => {
 
@@ -39,7 +40,7 @@ const UserSearch = ({ user }) => {
   return (
     <div className='w-full lg:w-1/2'>
       <div className="relative py-6 flex-auto">
-        <label className="block text-white text-sm font-bold mb-1" htmlFor="username">
+        <label className="block text-white text-sm font-bold mb-1">
           GitHub username
         </label>
         <div className="flex justify-end items-center relative">
@@ -69,7 +70,7 @@ const UserSearch = ({ user }) => {
               <span className="text-[10px] bg-gradient-to-r from-purple-400 flex items-center justify-center to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-transparent bg-clip-text px-6">
                 {/* profile component */}
 
-                <Profile userData={userData} />
+                <TiltCard user={userData} />
 
               </span> :
               <span className="hidden px-6 text-sm">

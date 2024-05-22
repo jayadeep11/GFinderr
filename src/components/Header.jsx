@@ -1,7 +1,13 @@
+import styles from "./bubble.module.css";
+
 export default function Header() {
     return (
-        <div className="m-10">
-            <h1 className="text-center font-bold text-white text-3xl sm:text-4xl lg:text-7xl ">Github User Finder</h1>
-        </div>
+        <h2 className="text-center text-5xl font-thin text-indigo-300 mt-10  pt-5">
+            {"Github User Finder".split("").map((child, idx) => (
+                <span className={styles.hoverText} key={idx}>
+                    {child}
+                </span>
+            ))}
+        </h2>
     )
 }
