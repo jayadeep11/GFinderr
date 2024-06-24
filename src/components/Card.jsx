@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
     motion,
     useMotionTemplate,
@@ -14,6 +14,7 @@ const HALF_ROTATION_RANGE = 32.5 / 2;
 
 const TiltCard = ({ user }) => {
     const ref = useRef(null);
+    
 
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -88,7 +89,7 @@ const TiltCard = ({ user }) => {
                 >
                     {user.bio}
                 </p>
-                <Link style={{ transform: "translatez(50px)" }} to='/userdetails' className='border hover:bg-black  text-center hover:text-white  border-gray-500 text-black font-normal  p-3  rounded-full'>View profile</Link>
+                <Link style={{ transform: "translatez(50px)" }} to={`/userdetails/${user.login}`} className='border hover:bg-black  text-center hover:text-white  border-gray-500 text-black font-normal  p-3  rounded-full'>View profile</Link>
             </div>
         </motion.div>
     );
