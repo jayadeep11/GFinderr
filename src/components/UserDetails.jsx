@@ -1,5 +1,7 @@
+// import { repos } from '@primer/react/lib-esm/DataTable/storybook/data';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
+import UserRepositories from './UserRepositories';
 
 const UserDetails = () => {
   const { username } = useParams();
@@ -43,19 +45,31 @@ const UserDetails = () => {
   if (!userData) {
     return <div>No user data available</div>;
   }
-  const { avatar_url, name, bio, login, html_url } = userData;
+  const { avatar_url, name, bio, login, html_url, followers, following} = userData;
 
   return (
     <>
-      <div className='mx-auto container h-full bg-white'>
-        <img src={avatar_url} alt={name} className='rounded-full w-32 h-32 mb-4' />
-        <h1 className='text-xl font-bold'>{name}</h1>
-        <p className='text-gray-700'>{bio || 'No bio provided'}</p>
-        <p className='text-gray-500'>Username: {login}</p>
-        <button className='border hover:bg-black  text-center hover:text-white  border-gray-500 text-black font-normal  p-3  rounded-full'>
-          <a href={html_url} className='text-[1rem]'>View in Github</a>
-        </button>
+      <div className='p-10'>
+        <div className='text-white flex flex-col gap-5 items-center'>
+          <img src={avatar_url} alt={name} className='rounded-full w-32 h-32 mb-4' />
+          <h1 className='text-xl font-bold'>{name}</h1>
+          <p className='text-sm font-[400]'>Username: {login}</p>
+          <p className='text-white text-lg font-normal opacity-50'>{bio || 'No bio provided'}</p>
+    
+          <div className='flex gap-8 text-white font-normal'>
+          <p className='text-white font-normal'>Followers: {followers}</p>
+          <p>Following: {following}</p>
+          </div>
+          
+          <button className='border hover:bg-white  text-center hover:text-black  border-gray-500  font-medium  p-3  rounded-full text-gray-300 w-[9rem] h-16'>
+            <a href={html_url} className='text-[1rem]'>View in Github</a>
+          </button>
+        </div>
 
+
+        <div className='p-5'>
+          <UserRepositories username={username} />
+        </div>
 
       </div>
     </>
