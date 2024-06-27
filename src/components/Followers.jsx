@@ -49,7 +49,7 @@ const Followers = () => {
                     <div key={follower.id} className='flex flex-col items-center border border-neutral-700 p-10 rounded-xl hover:bg-white hover:text-black font-bold gap-5'>
                         <img src={follower.avatar_url} alt={follower.login} width={90} height={90} className='rounded-full' />
                         <button onClick={<UserDetails />}>
-                            <a href={<UserDetails />} target="_blank" rel="noopener noreferrer">
+                            <a href={follower.html_url} target="_blank" rel="noopener noreferrer">
                                 {follower.login}
                             </a>
                         </button>
