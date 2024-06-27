@@ -1,7 +1,7 @@
-// import { repos } from '@primer/react/lib-esm/DataTable/storybook/data';
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import UserRepositories from './UserRepositories';
+
 
 const UserDetails = () => {
   const { username } = useParams();
@@ -9,30 +9,25 @@ const UserDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
   useEffect(() => {
-    const fetchuserdata = async () => {
+    const fetchUserData = async () => {
       setLoading(true);
       try {
         const response = await fetch(`https://api.github.com/users/${username}`);
         if (!response.ok) {
-          throw new Error('user not found');
+          throw new Error('User not found');
         }
         const data = await response.json();
         setUserData(data);
       } catch (error) {
-        setError(error.message)
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
-      finally {
-        setLoading(false)
-      }
-
     };
-    fetchuserdata();
 
-
-  }, [username])
-
+    fetchUserData();
+  }, [username]);
 
   if (loading) {
     return <div>Loading user details...</div>;
@@ -45,6 +40,7 @@ const UserDetails = () => {
   if (!userData) {
     return <div>No user data available</div>;
   }
+
   const { avatar_url, name, bio, login, html_url, followers, following } = userData;
 
   return (
@@ -56,22 +52,27 @@ const UserDetails = () => {
         <p className='text-white text-lg font-normal opacity-50'>{bio || 'No bio provided'}</p>
 
         <div className='flex gap-8 text-white font-normal'>
-          <p className='text-white font-normal'>Followers: {followers}</p>
-          <p>Following: {following}</p>
+          <Link to={`/userdetails/${login}/followers`} className='text-white font-normal'>
+            Followers: {followers}
+          </Link>
+          <Link to={''} className='text-white font-normal'>
+            Following: {following}
+          </Link>
+          
         </div>
 
-        <button className='border hover:bg-white  text-center hover:text-black  border-gray-500  font-medium  p-3  rounded-full text-gray-300 w-[9rem] h-16'>
-          <a href={html_url} className='text-[1rem]'>View in Github</a>
+        <button className='border hover:bg-white text-center hover:text-black border-gray-500 font-medium p-3 rounded-full text-gray-300 w-[10rem] h-12'>
+          <a href={html_url} target="_blank" rel="noopener noreferrer" className='text-[1rem]'>
+            View on GitHub
+          </a>
         </button>
       </div>
-
 
       <div className='lg:p-3'>
         <UserRepositories username={username} />
       </div>
-
     </div>
-  )
+  );
 }
 
-export default UserDetails
+export default UserDetails;
