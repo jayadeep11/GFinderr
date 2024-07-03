@@ -62,7 +62,7 @@ const UserDetails = () => {
         </div>
 
         <button className='border hover:bg-white text-center hover:text-black border-gray-500 font-medium p-3 rounded-full text-gray-300 w-[10rem] h-12'>
-          <a href={html_url} target="_blank" rel="noopener noreferrer" className='text-[1rem]'>
+          <a href={html_url} target="_blank" rel="noopener noreferrer" className='text-[1.5rem]'>
             View on GitHub
           </a>
         </button>
